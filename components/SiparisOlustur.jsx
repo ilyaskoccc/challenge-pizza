@@ -1,4 +1,7 @@
-import { Button, CardBody, CardText, CardTitle, Form, FormGroup, FormText, Input, Label } from "reactstrap";
+import React from 'react';
+import { Link } from "react-router-dom";
+import { Button, CardBody, CardText, CardTitle, Form, FormGroup, Input, Label } from "reactstrap";
+
 
 export default function SiparisOlustur() {
     return (
@@ -8,7 +11,9 @@ export default function SiparisOlustur() {
                     <img src="Assets/Iteration-1-assets/logo.svg" alt="Logo" />
                 </section>
                 <section className="yazi">
-                    <p>Anasayfa - Seçenekler - Sipariş Oluştur</p>
+                    <p>
+                        <Link to="/">Anasayfa</Link> -  Sipariş Oluştur
+                    </p>
                 </section>
             </header>
             <div className="form">
@@ -37,44 +42,47 @@ export default function SiparisOlustur() {
                         Küçük bir pizzaya bazen pizzetta denir.
                     </p>
                     <FormGroup className="boyutHamur">
-                        <FormGroup className="yeni">
+                        <FormGroup className="yeni" tag="fieldset">
                             <legend>
                                 Boyut Seç
                             </legend>
-                            <FormGroup check>
+                            <FormGroup check disabled>
                                 <Input
-                                    name="radio1"
+                                    name="radio"
+                                    id="kücük"
                                     type="radio"
                                 />
-                                <Label check className="boyutYazi">
+                                <Label check className="boyutYazi" htmlFor="kücük">
                                     Küçük
                                 </Label>
                             </FormGroup>
                             <FormGroup check>
                                 <Input
-                                    name="radio1"
+                                    name="radio"
+                                    id="orta"
                                     type="radio"
                                 />
-                                <Label check className="boyutYazi">
+                                <Label check className="boyutYazi" htmlFor="orta">
                                     Orta
                                 </Label>
                             </FormGroup>
                             <FormGroup check>
                                 <Input
-                                    name="radio1"
+                                    name="radio"
+                                    id="büyük"
                                     type="radio"
                                 />
-                                <Label check className="boyutYazi">
+                                <Label check className="boyutYazi" htmlFor="büyük">
                                     Büyük
                                 </Label>
                             </FormGroup>
                         </FormGroup>
                         <FormGroup className="yeni">
-                            <Label for="exampleSelect">
+                            <Label htmlFor="kalinlik">
                                 Hamur Seç
                             </Label>
                             <Input
-                                id="exampleSelect"
+                                id="kalinlik"
                                 name="select"
                                 type="select"
                             >
@@ -106,8 +114,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="pepperoni"
+                                    id="pepperoni"
+                                />
+                                <Label htmlFor="pepperoni" check>
                                     Pepperoni
                                 </Label>
                             </FormGroup>
@@ -116,8 +128,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="tavuk ızgara"
+                                    id="tavuk ızgara"
+                                />
+                                <Label htmlFor="tavuk ızgara" check>
                                     Tavuk Izgara
                                 </Label>
                             </FormGroup>
@@ -126,8 +142,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="mısır"
+                                    id="mısır"
+                                />
+                                <Label htmlFor="mısır" check>
                                     Mısır
                                 </Label>
                             </FormGroup>
@@ -136,8 +156,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="sarımsak"
+                                    id="sarımsak"
+                                />
+                                <Label htmlFor="sarımsak" check>
                                     Sarımsak
                                 </Label>
                             </FormGroup>
@@ -146,8 +170,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="ananas"
+                                    id="ananas"
+                                />
+                                <Label htmlFor="ananas" check>
                                     Ananas
                                 </Label>
                             </FormGroup>
@@ -158,8 +186,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="sosis"
+                                    id="sosis"
+                                />
+                                <Label htmlFor="sosis" check>
                                     Sosis
                                 </Label>
                             </FormGroup>
@@ -168,8 +200,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="sogan"
+                                    id="sogan"
+                                />
+                                <Label htmlFor="sogan" check>
                                     Soğan
                                 </Label>
                             </FormGroup>
@@ -178,8 +214,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="sucuk"
+                                    id="sucuk"
+                                />
+                                <Label htmlFor="sucuk" check>
                                     Sucuk
                                 </Label>
                             </FormGroup>
@@ -188,8 +228,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="biber"
+                                    id="biber"
+                                />
+                                <Label htmlFor="biber" check>
                                     Biber
                                 </Label>
                             </FormGroup>
@@ -198,8 +242,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="kabak"
+                                    id="kabak"
+                                />
+                                <Label htmlFor="kabak" check>
                                     Kabak
                                 </Label>
                             </FormGroup>
@@ -210,8 +258,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="kanada jambonu"
+                                    id="kanada jambonu"
+                                />
+                                <Label htmlFor="kanada jambonu" check>
                                     Kanada Jambonu
                                 </Label>
                             </FormGroup>
@@ -220,8 +272,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="domates"
+                                    id="domates"
+                                />
+                                <Label htmlFor="domates" check>
                                     Domates
                                 </Label>
                             </FormGroup>
@@ -230,8 +286,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="jalepeno"
+                                    id="jalepeno"
+                                />
+                                <Label htmlFor="jalepeno" check>
                                     Jalepeno
                                 </Label>
                             </FormGroup>
@@ -240,8 +300,12 @@ export default function SiparisOlustur() {
                                 inline
                                 className="malzemeBosluk"
                             >
-                                <Input type="checkbox" />
-                                <Label check>
+                                <Input
+                                    type="checkbox"
+                                    name="eski kaşar"
+                                    id="eski kaşar"
+                                />
+                                <Label htmlFor="eski kaşar" check>
                                     Eski Kaşar
                                 </Label>
                             </FormGroup>
