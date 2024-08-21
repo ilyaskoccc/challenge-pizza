@@ -25,26 +25,56 @@ export default function SiparisOlustur() {
     const isMaxDisabled = form.malzemeler.length >= 10;
 
 
+    const [errors, setErrors] = useState({
+        isim: true,
+        boyut: true,
+        malzemeler: true,
+    });
+
 
     const handleChange = (event) => {
+
         let { name, value } = event.target;
+
+        setForm({ ...form, [name]: value });
+
+        if (name === 'isim') {
+            if (value === "kücük" || value === "orta" || value === "büyük") {
+                setErrors({ ...errors, [name]: false });
+            } else {
+                setErrors({ ...errors, [name]: true });
+            }
+        }
+
+
+        if (name === 'boyut') {
+            if (value === "İncecik Hamur" || value === "İnce Hamur" || value === "Klasik Hamur") {
+                setErrors({ ...errors, [name]: false });
+            } else {
+                setErrors({ ...errors, [name]: true });
+            }
+        }
+
 
         if (name === "malzemeler") {
             if (form.malzemeler.includes(value)) {
+                if (form.malzemeler.length < 5) {
+                    setErrors({ ...errors, [name]: true });
+                }
                 setForm({
                     ...form, ["malzemeler"]: form.malzemeler.filter((item) => {
                         return item !== value;
                     })
                 });
             } else {
-                if (form.malzemeler.length < 10) {
+                if (form.malzemeler.length < 3) {
                     setForm({ ...form, ["malzemeler"]: [...form.malzemeler, value] });
-                } else {
-                    alert("En Fazla 10 Adet secebilirsiniz.");
+                    setErrors({ ...errors, [name]: true });
+                } else if (form.malzemeler.length > 3 || form.malzemeler.length < 10) {
+                    setForm({ ...form, ["malzemeler"]: [...form.malzemeler, value] });
+                    setErrors({ ...errors, [name]: false });
                 }
             }
-        } else {
-            setForm({ ...form, [name]: value });
         }
     };
 
@@ -100,6 +130,7 @@ export default function SiparisOlustur() {
                         genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir.
                         Küçük bir pizzaya bazen pizzetta denir.
                     </p>
+
                     <FormGroup className="boyutHamur">
                         <FormGroup className="yeni" tag="fieldset">
                             <legend>
@@ -112,6 +143,7 @@ export default function SiparisOlustur() {
                                     type="radio"
                                     value="kücük"
                                     onChange={handleChange}
+                                    invalid={errors.isim}
                                 />
                                 <Label check className="boyutYazi" htmlFor="kücük">
                                     Küçük
@@ -124,6 +156,7 @@ export default function SiparisOlustur() {
                                     type="radio"
                                     value="orta"
                                     onChange={handleChange}
+                                    invalid={errors.isim}
                                 />
                                 <Label check className="boyutYazi" htmlFor="orta">
                                     Orta
@@ -136,11 +169,13 @@ export default function SiparisOlustur() {
                                     type="radio"
                                     value="büyük"
                                     onChange={handleChange}
+                                    invalid={errors.isim}
                                 />
                                 <Label check className="boyutYazi" htmlFor="büyük">
                                     Büyük
                                 </Label>
                             </FormGroup>
+                            {errors.isim && <FormFeedback tooltip style={{ display: "flex", marginTop: "35px" }}>{errorMessages.isim}</FormFeedback>}
                         </FormGroup>
                         <FormGroup className="yeni">
                             <Label htmlFor="exampleSelect">
@@ -151,6 +186,7 @@ export default function SiparisOlustur() {
                                 name="boyut"
                                 type="select"
                                 onChange={handleChange}
+                                invalid={errors.boyut}
                             >
                                 <option>
                                     Hamur Kalınlığı
@@ -166,6 +202,7 @@ export default function SiparisOlustur() {
                                 </option>
                             </Input>
                         </FormGroup>
+                        {errors.boyut && <FormFeedback tooltip style={{ display: "flex", marginLeft: "136px", marginTop: "-20px" }}>{errorMessages.boyut}</FormFeedback>}
                     </FormGroup>
                     <legend>
                         Ek Malzemeler
@@ -184,6 +221,7 @@ export default function SiparisOlustur() {
                                         value={item}
                                         onChange={handleChange}
                                         disabled={isMaxDisabled && !form.malzemeler.includes(item)}
+                                        invalid={errors.malzemeler}
                                     />
                                     <Label htmlFor={item} check>
                                         {item}
@@ -201,6 +239,7 @@ export default function SiparisOlustur() {
                                         value={item}
                                         onChange={handleChange}
                                         disabled={isMaxDisabled && !form.malzemeler.includes(item)}
+                                        invalid={errors.malzemeler}
                                     />
                                     <Label htmlFor={item} check>
                                         {item}
@@ -218,6 +257,7 @@ export default function SiparisOlustur() {
                                         value={item}
                                         onChange={handleChange}
                                         disabled={isMaxDisabled && !form.malzemeler.includes(item)}
+                                        invalid={errors.malzemeler}
                                     />
                                     <Label htmlFor={item} check>
                                         {item}
@@ -225,6 +265,7 @@ export default function SiparisOlustur() {
                                 </FormGroup>
                             ))}
                         </FormGroup>
+                        {errors.malzemeler && <FormFeedback tooltip style={{ display: "flex", marginTop: "415px" }}>{errorMessages.malzemeler}</FormFeedback>}
                     </FormGroup>
                     <FormGroup className="textAlani">
                         <Label htmlFor="özel" style={{ fontWeight: "bold" }}>
