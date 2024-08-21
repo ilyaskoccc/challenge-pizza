@@ -58,6 +58,7 @@ export default function SiparisOlustur() {
 
         if (name === "malzemeler") {
             if (form.malzemeler.includes(value)) {
+                //çıkarılan malzemeler 4 ün aşağısındaysa validasyon hatasını gösterecek.
                 if (form.malzemeler.length < 5) {
                     setErrors({ ...errors, [name]: true });
                 }
