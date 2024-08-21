@@ -15,37 +15,13 @@ const initialForm = {
 export default function SiparisOlustur() {
 
     const [form, setForm] = useState(initialForm);
-    const [errors, setErrors] = useState({
-        isim: false,
-        boyut: false,
-        malzemeler: false,
-        özel: false,
-    });
-    const [isValid, setIsValid] = useState(false);
 
     const isMaxDisabled = form.malzemeler.length >= 10;
 
 
-    const validateForm = () => {
-        const newErrors = {
-            isim: form.isim === '',
-            boyut: form.boyut === '',
-            malzemeler: form.malzemeler.length < 4,
-            özel: form.özel.trim() === '',
-        };
-        setErrors(newErrors);
-
-        setIsValid(
-            !newErrors.isim &&
-            !newErrors.boyut &&
-            !newErrors.malzemeler &&
-            !newErrors.özel
-        );
-    };
 
     const handleChange = (event) => {
-        let { name, value, type } = event.target;
-        value = type === 'checkbox' ? event.target.checked : value;
+        let { name, value } = event.target;
 
         if (name === "malzemeler") {
             if (form.malzemeler.includes(value)) {
@@ -57,33 +33,25 @@ export default function SiparisOlustur() {
             } else {
                 if (form.malzemeler.length < 10) {
                     setForm({ ...form, ["malzemeler"]: [...form.malzemeler, value] });
+                } else {
+                    alert("En Fazla 10 Adet secebilirsiniz.");
                 }
             }
         } else {
             setForm({ ...form, [name]: value });
         }
-
-        validateForm();
     };
 
 
+
+
     const handleIncrement = () => {
-        setForm({
-            ...form,
-            adet: form.adet + 1
-        });
+        setForm({ ...form, adet: form.adet + 1 });
+        console.log(form.adet);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        validateForm();
-        if (!isValid) {
-            alert("Formdaki hataları düzeltin.");
-            return;
-        } else {
-            // Formu gönderme işlemi burada yapılır.
-            console.log("Form gönderildi:", form);
-        }
     };
 
 
@@ -138,7 +106,6 @@ export default function SiparisOlustur() {
                                     type="radio"
                                     value="kücük"
                                     onChange={handleChange}
-                                    invalid={errors.isim}
                                 />
                                 <Label check className="boyutYazi" htmlFor="kücük">
                                     Küçük
@@ -151,7 +118,6 @@ export default function SiparisOlustur() {
                                     type="radio"
                                     value="orta"
                                     onChange={handleChange}
-                                    invalid={errors.isim}
                                 />
                                 <Label check className="boyutYazi" htmlFor="orta">
                                     Orta
@@ -164,13 +130,11 @@ export default function SiparisOlustur() {
                                     type="radio"
                                     value="büyük"
                                     onChange={handleChange}
-                                    invalid={errors.isim}
                                 />
                                 <Label check className="boyutYazi" htmlFor="büyük">
                                     Büyük
                                 </Label>
                             </FormGroup>
-                            {errors.isim && <FormFeedback>Boyut seçmelisiniz.</FormFeedback>}
                         </FormGroup>
                         <FormGroup className="yeni">
                             <Label htmlFor="exampleSelect">
@@ -181,7 +145,6 @@ export default function SiparisOlustur() {
                                 name="boyut"
                                 type="select"
                                 onChange={handleChange}
-                                invalid={errors.boyut}
                             >
                                 <option>
                                     Hamur Kalınlığı
@@ -196,13 +159,11 @@ export default function SiparisOlustur() {
                                     Klasik Hamur
                                 </option>
                             </Input>
-                            {errors.boyut && <FormFeedback>Hamur seçmelisiniz.</FormFeedback>}
                         </FormGroup>
                     </FormGroup>
                     <legend>
                         Ek Malzemeler
                     </legend>
-                    {errors.malzemeler && <FormFeedback>En az 4 malzeme seçmelisiniz.</FormFeedback>}
                     <legend className="malzemeSec">
                         En Fazla 10 Malzeme Seçebilirsiniz. (5₺)
                     </legend>
@@ -221,7 +182,6 @@ export default function SiparisOlustur() {
                                     <Label htmlFor={item} check>
                                         {item}
                                     </Label>
-                                    {errors.malzemeler && <FormFeedback>En az 4 malzeme seçmelisiniz.</FormFeedback>}
                                 </FormGroup>
                             ))}
                         </FormGroup>
@@ -271,17 +231,12 @@ export default function SiparisOlustur() {
                             placeholder="Siparişinize Eklemek İstediğiniz Not Var Mı?"
                             className="not"
                             onChange={handleChange}
-                            invalid={errors.özel}
                         />
-                        {errors.özel && <FormFeedback>Sipariş notu boş bırakılamaz.</FormFeedback>}
                     </FormGroup>
                     <div className="siparisGör">
                         <FormGroup className="arttir">
                             <Button color="warning" className="arttirbtn" onClick={() => {
-                                setForm({
-                                    ...form,
-                                    adet: form.adet > 1 ? form.adet - 1 : 1 // 1'in altına düşmesini engelliyor
-                                });
+                                setForm({ ...form, adet: form.adet > 1 ? form.adet - 1 : 1 }); // 1'in altına düşmesini engelliyor
                             }}>
                                 -
                             </Button>
@@ -289,14 +244,13 @@ export default function SiparisOlustur() {
                                 id="exampleText"
                                 name="text"
                                 type="text"
-                                value={form.adet}
+                                value={form.adet} // placeholder yerine value kullanılıyor
+                                readOnly // Kullanıcı manuel olarak değiştiremesin diye readOnly ekledik
                                 className="arttirtxt"
-                                readOnly
                             />
                             <Button color="warning" className="arttirbtn" onClick={handleIncrement}>
                                 +
                             </Button>
-
                         </FormGroup>
                         <div className="siparisDetay">
                             <div className="siparis">
@@ -307,7 +261,7 @@ export default function SiparisOlustur() {
                                     Seçimler
                                 </div>
                                 <div className="right">
-                                    {form.malzemeler.length * 5}₺
+                                    {(form.malzemeler.length * 5) * form.adet}₺
                                 </div>
                             </div>
                             <div className="toplami">
@@ -315,7 +269,7 @@ export default function SiparisOlustur() {
                                     Toplam
                                 </div>
                                 <div className="right">
-                                    {(form.malzemeler.length * 5 + form.fiyat).toFixed(2)}₺
+                                    {((form.malzemeler.length * 5 + form.fiyat).toFixed(2) * form.adet)}₺
                                 </div>
                             </div>
                         </div>
