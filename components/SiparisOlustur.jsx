@@ -344,7 +344,7 @@ export default function SiparisOlustur() {
                         </div>
                     </div>
                     <FormGroup className="btnSiparis">
-                        <Button color="warning" className="siparisVer">
+                        <Button color="warning" className="siparisVer" disabled={!isValid}>
                             Sipariş Ver
                         </Button>
                     </FormGroup>
