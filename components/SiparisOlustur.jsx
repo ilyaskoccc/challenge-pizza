@@ -12,6 +12,12 @@ const initialForm = {
 };
 
 
+const errorMessages = {
+    isim: "Boyut seçmelisiniz.",
+    boyut: "Hamur seçmelisiniz.",
+    malzemeler: "En az 4 malzeme seçmelisiniz.",
+};
+
 export default function SiparisOlustur() {
 
     const [form, setForm] = useState(initialForm);
