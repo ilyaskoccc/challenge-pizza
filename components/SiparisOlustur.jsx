@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from "react-router-dom";
 import { Button, CardBody, CardText, CardTitle, Form, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import axios from 'axios';
 
 const initialForm = {
     isim: '',
@@ -21,15 +22,26 @@ const errorMessages = {
 export default function SiparisOlustur() {
 
     const [form, setForm] = useState(initialForm);
+    const [isValid, setIsValid] = useState(false);
+    const history = useHistory();
 
     const isMaxDisabled = form.malzemeler.length >= 10;
-
 
     const [errors, setErrors] = useState({
         isim: true,
         boyut: true,
         malzemeler: true,
     });
+
+
+    useEffect(() => {
+        if (errors.isim === false && errors.boyut === false && errors.malzemeler === false) {
+            setIsValid(true);
+        } else {
+            setIsValid(false);
+        }
+    }, [form]);
+
 
 
     const handleChange = (event) => {
@@ -89,6 +101,15 @@ export default function SiparisOlustur() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (!isValid) return;
+        axios
+            .get('https://reqres.in/api/pizza')
+            .then((res) => {
+                setForm(initialForm);
+                history.push('/siparis-basarili');
+            }).catch((err) => {
+                history.push('/error');
+            });
     };
 
 

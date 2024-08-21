@@ -1,4 +1,5 @@
 import Anasayfa from '../components/Anasayfa';
+import SiparisBasarili from '../components/SiparisBasarili';
 import SiparisOlustur from '../components/SiparisOlustur';
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/siparis-olustur">
             <SiparisOlustur />
+          </Route>
+          <Route path="/siparis-basarili">
+            <SiparisBasarili />
           </Route>
         </Switch>
       </div>
