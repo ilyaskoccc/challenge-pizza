@@ -15,9 +15,11 @@ export default function Anasayfa() {
                         </p>
                     </section>
                     <section>
-                        <Button color="warning" className="anasayfaBtn">
-                            <Link to="/siparis-olustur">ACIKTIM</Link>
-                        </Button>
+                        <Link to="/siparis-olustur">
+                            <Button color="warning" className="anasayfaBtn">
+                                ACIKTIM
+                            </Button>
+                        </Link>
                     </section>
                 </div>
             </div>
