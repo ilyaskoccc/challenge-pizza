@@ -104,9 +104,10 @@ export default function SiparisOlustur() {
         if (!isValid) return;
         axios
             .get('https://reqres.in/api/pizza')
-            .then((res) => {
+            .then((response) => {
                 setForm(initialForm);
                 history.push('/siparis-basarili');
+                console.log(response.data);
             }).catch((err) => {
                 history.push('/error');
             });
@@ -123,7 +124,7 @@ export default function SiparisOlustur() {
                 </section>
                 <section className="yazi">
                     <p>
-                        <Link to="/">Anasayfa</Link> -  Sipariş Oluştur
+                        <Link to="/" style={{ color: "#ffffff" }}>Anasayfa</Link> -  Sipariş Oluştur
                     </p>
                 </section>
             </header>
