@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
+
+.footter {
+    background: #1A1A1A;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 155px;
+    padding: 75px 0px;
+}
+
+.yaziFootter {
+    font-family: Londrina Solid;
+    font-size: 50px;
+    line-height: 50px;
+    width: 15%;
+}
+
+.solFootter {
+    color: white;
+    width: 290px;
+}
+
+.solFootter img {
+    padding-right: 3%;
+}
+
+.solFootterYazi {
+    font-size: 15px;
+    padding-top: 5%;
+}
+
+.ortaFootter {
+    color: white;
+}
+
+.ortaFootter div {
+    padding-top: 7%;
+}
+
+.ortaFootter h3 {
+    padding-bottom: 5%;
+}
+
+.sagFootter {
+    color: white;
+    width: 400px;
+}
+
+.sagFootter div {
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+
+.sagFootter h3 {
+    padding-bottom: 5%;
+}
+
+.sagFootter img {
+    width: 100px;
+    height: 100px;
+}
+
+.info {
+    background: #1A1A1A;
+    color: white;
+    font-family: Barlow;
+    font-size: 16px;
+}

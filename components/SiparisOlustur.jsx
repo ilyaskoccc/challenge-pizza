@@ -271,7 +271,7 @@ export default function SiparisOlustur() {
                             ))}
                         </FormGroup>
                         <FormGroup className="ekMalzemeler">
-                            {['Kanada Jambonu', 'Domates', 'Jalepeno', 'Eski Kaşar'].map(item => (
+                            {['Kanada Jambonu', 'Domates', 'Jalepeno', 'Kaşar Peyniri'].map(item => (
                                 <FormGroup check inline className="malzemeBosluk" key={item}>
                                     <Input
                                         type="checkbox"

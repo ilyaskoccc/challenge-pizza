@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.lezzet {
+    font-family: Satisfy;
+    font-size: 32px;
+    color: #FDC913;
+}
+
+.cizgi {
+    border-top: 1px solid white;
+    width: 445px;
+    margin-top: 50px;
+}
+
+.siparisBasariliBaslik {
+    font-family: Barlow;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 200px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.siparisBasariliDetay {
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.siparisOzet {
+    padding-bottom: 15px;
+    width: 180px;
+}
+
+.siparisBasariliFiyat {
+    margin: 55px 0px 125px 0px;
+    padding: 45px 0px 0px 0px;
+    border: 1px solid #D9D9D9;
+    color: white;
+    width: 350px;
+    height: 197px;
+    border-radius: 10px;
+}
+
+.siparisRenk {
+    color: white;
+}

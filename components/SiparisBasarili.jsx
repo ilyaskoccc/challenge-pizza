@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function SiparisBasarili() {
+
     const history = useHistory();
 
     useEffect(() => {
@@ -33,9 +34,48 @@ export default function SiparisBasarili() {
             </section>
             <section className="SiparisBasariliTxt">
                 <p>
-                    Tebrikler! <br /> SİPARİŞİNİZ ALINDI!
+                    <p className="lezzet">lezzetin yolda</p> SİPARİŞ ALINDI!
                 </p>
             </section>
+            <section className="cizgi">
+            </section>
+            <div>
+                <section className="siparisBasariliBaslik">
+                    Position Absolute Acı Pizza
+                </section>
+            </div>
+            <div className="siparisBasariliDetay">
+                <div className="siparisOzet">
+                    Boyut: <strong> L</strong>
+                </div>
+                <div className="siparisOzet">
+                    Hamur: <strong>İncecik Hamur</strong>
+                </div>
+                <div className="siparisOzet">
+                    Malzemeler: <strong>Sucuk, Kaşar, Domates, Mısır, Sucuk, Kaşar, Domates, Mısır</strong>
+                </div>
+            </div>
+            <div className="siparisBasariliFiyat">
+                <div className="siparis siparisRenk">
+                    Sipariş Toplamı
+                </div>
+                <div className="secimler siparisRenk">
+                    <div className="left siparisRenk">
+                        Seçimler
+                    </div>
+                    <div className="right siparisRenk">
+                        12₺
+                    </div>
+                </div>
+                <div className="toplami siparisRenk">
+                    <div className="left siparisRenk">
+                        Toplam
+                    </div>
+                    <div className="right siparisRenk">
+                        12₺
+                    </div>
+                </div>
+            </div>
             <ToastContainer />
         </div>
     );

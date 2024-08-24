@@ -3,9 +3,12 @@ import SiparisBasarili from '../components/SiparisBasarili';
 import SiparisOlustur from '../components/SiparisOlustur';
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../components/SiparisBasarili.css';
 
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Footter from '../components/Footter';
+
 
 function App() {
 
@@ -24,6 +27,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <Footter />
     </Router>
   )
 
