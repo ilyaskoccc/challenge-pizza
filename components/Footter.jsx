@@ -54,12 +54,14 @@ export default function Footter() {
                     </div>
                 </div>
             </div>
-            <div className="info">
-                <div>
-                    © 2023 Teknolojik Yemekler.
-                </div>
-                <div>
-                    twitter
+            <div className="infoGrup">
+                <div className="info">
+                    <div>
+                        © 2023 Teknolojik Yemekler.
+                    </div>
+                    <div>
+                        twitter
+                    </div>
                 </div>
             </div>
         </>

@@ -27,7 +27,7 @@
 
 .solFootterYazi {
     font-size: 15px;
-    padding-top: 5%;
+    padding-top: 10%;
 }
 
 .ortaFootter {
@@ -64,9 +64,16 @@
     height: 100px;
 }
 
-.info {
+.infoGrup {
     background: #1A1A1A;
     color: white;
     font-family: Barlow;
     font-size: 16px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1920px;
+    width: 100%;
 }

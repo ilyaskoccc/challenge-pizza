@@ -251,7 +251,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  height: 695px;
+  height: 1080px;
   gap: 10px;
   opacity: 0px;
 }
@@ -265,12 +265,8 @@
   transform: translate(-50%, -50%);
 }
 
-.anasayfaHeader {
-  padding-top: 100px;
-}
 
 .anasayfaTxt {
-  padding-top: 20px;
   font-family: Roboto Condensed;
   font-size: 86px;
   font-weight: 300;
