@@ -121,7 +121,9 @@ export default function SiparisOlustur() {
         <>
             <header className="header">
                 <section>
-                    <img src="Assets/Iteration-1-assets/logo.svg" alt="Logo" />
+                    <Link to="/">
+                        <img src="Assets/Iteration-1-assets/logo.svg" alt="Logo" />
+                    </Link>
                 </section>
             </header>
             <section className="header1">

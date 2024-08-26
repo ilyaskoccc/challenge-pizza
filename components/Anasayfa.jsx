@@ -8,7 +8,9 @@ export default function Anasayfa() {
             <div className="hero-image">
                 <div className="hero-text">
                     <section>
-                        <img src="Assets/Iteration-1-assets/logo.svg" alt="Logo" />
+                        <Link to="/">
+                            <img src="Assets/Iteration-1-assets/logo.svg" alt="Logo" />
+                        </Link>
                     </section>
                     <p className="firsat">fırsatı kaçırma</p>
                     <section className="anasayfaTxt">
