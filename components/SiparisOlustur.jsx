@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import { Button, CardBody, CardText, CardTitle, Form, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 import axios from 'axios';
+import "./SiparisOlustur.css";
 
 const initialForm = {
     isim: '',
@@ -122,14 +123,13 @@ export default function SiparisOlustur() {
                 <section>
                     <img src="Assets/Iteration-1-assets/logo.svg" alt="Logo" />
                 </section>
-                <section className="yazi">
-                    <p>
-                        <Link to="/" style={{ color: "#ffffff" }}>Anasayfa</Link> -  Sipariş Oluştur
-                    </p>
-                </section>
             </header>
-            <div className="form">
-                <Form onSubmit={handleSubmit}>
+            <section className="header1">
+                <div>
+                    <img src='https://s3-alpha-sig.figma.com/img/3dc3/888e/fb1b2dee44748bbd31d4f786edc3a4d1?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LDdi33mFegnT3spOf4tpN6XQb5WpfxLBYC3Xzfusteb4oxscwTWHXVgzOFsF52BARpTjcjU7li0cggFKCyIS4WDtpUSwFy2RH3ybW~nwz2JDNBGmga03Mqk6BXqy6J-nfQaByzQ6xUmrf5um0kuyr1l5bqNOXYnwmGxo8QKPRNdlb7TZy2m9SX3hQDsq5xC~D0P-KP6ARYl2z8OuTCtP1jGKZjZdCpPMnC62OUwoVDLe5T5Pmu5qrrNRFJL2ypwTSLvyMXJgA5lLVuj7o4cTM0S4w1Ok6FN7RbX6s-t1ZewFroWh0RfFNog9f4eNPPjzMpk5LbP1v-S9AQRs0juQow__' alt='item1.jpg' />
+                </div>
+                <div className='yazi'>
+                    <Link to="/">Anasayfa</Link> -  <Link to="/siparis-olustur" style={{ color: "#CE2829" }}>Sipariş Oluştur</Link>
                     <CardBody>
                         <CardTitle tag="h2">
                             <section className="baslik">
@@ -153,52 +153,27 @@ export default function SiparisOlustur() {
                         genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir.
                         Küçük bir pizzaya bazen pizzetta denir.
                     </p>
-
+                </div>
+            </section>
+            <div className="form">
+                <Form onSubmit={handleSubmit}>
                     <FormGroup className="boyutHamur">
                         <FormGroup className="yeni" tag="fieldset">
                             <legend>
                                 Boyut Seç
                             </legend>
-                            <FormGroup check>
-                                <Input
-                                    name="isim"
-                                    id="kücük"
-                                    type="radio"
-                                    value="kücük"
-                                    onChange={handleChange}
-                                    invalid={errors.isim}
-                                />
-                                <Label check className="boyutYazi" htmlFor="kücük">
-                                    Küçük
-                                </Label>
-                            </FormGroup>
-                            <FormGroup check>
-                                <Input
-                                    name="isim"
-                                    id="orta"
-                                    type="radio"
-                                    value="orta"
-                                    onChange={handleChange}
-                                    invalid={errors.isim}
-                                />
-                                <Label check className="boyutYazi" htmlFor="orta">
-                                    Orta
-                                </Label>
-                            </FormGroup>
-                            <FormGroup check>
-                                <Input
-                                    name="isim"
-                                    id="büyük"
-                                    type="radio"
-                                    value="büyük"
-                                    onChange={handleChange}
-                                    invalid={errors.isim}
-                                />
-                                <Label check className="boyutYazi" htmlFor="büyük">
-                                    Büyük
-                                </Label>
-                            </FormGroup>
-                            {errors.isim && <FormFeedback tooltip style={{ display: "flex", marginTop: "35px" }}>{errorMessages.isim}</FormFeedback>}
+                            <div className='yeniBoyut'>
+                                <div className='boyutSecim'>
+                                    S
+                                </div>
+                                <div className='boyutSecim'>
+                                    M
+                                </div>
+                                <div className='boyutSecim' style={{ background: "#FFEECC" }}>
+                                    L
+                                </div>
+                            </div>
+                            {errors.isim && <FormFeedback tooltip style={{ display: "flex", marginTop: "550px" }}>{errorMessages.isim}</FormFeedback>}
                         </FormGroup>
                         <FormGroup className="yeni">
                             <Label htmlFor="exampleSelect">
@@ -208,11 +183,12 @@ export default function SiparisOlustur() {
                                 id="exampleSelect"
                                 name="boyut"
                                 type="select"
+                                style={{ background: "#FAF7F2" }}
                                 onChange={handleChange}
                                 invalid={errors.boyut}
                             >
                                 <option>
-                                    Hamur Kalınlığı
+                                    --Hamur Kalınlığı--
                                 </option>
                                 <option>
                                     İncecik Hamur
@@ -225,7 +201,7 @@ export default function SiparisOlustur() {
                                 </option>
                             </Input>
                         </FormGroup>
-                        {errors.boyut && <FormFeedback tooltip style={{ display: "flex", marginLeft: "136px", marginTop: "-20px" }}>{errorMessages.boyut}</FormFeedback>}
+                        {errors.boyut && <FormFeedback tooltip style={{ display: "flex", marginLeft: "135px", marginTop: "515px" }}>{errorMessages.boyut}</FormFeedback>}
                     </FormGroup>
                     <legend>
                         Ek Malzemeler
@@ -245,6 +221,7 @@ export default function SiparisOlustur() {
                                         onChange={handleChange}
                                         disabled={isMaxDisabled && !form.malzemeler.includes(item)}
                                         invalid={errors.malzemeler}
+                                        className='checkStil'
                                     />
                                     <Label htmlFor={item} check>
                                         {item}
@@ -288,7 +265,7 @@ export default function SiparisOlustur() {
                                 </FormGroup>
                             ))}
                         </FormGroup>
-                        {errors.malzemeler && <FormFeedback tooltip style={{ display: "flex", marginTop: "415px" }}>{errorMessages.malzemeler}</FormFeedback>}
+                        {errors.malzemeler && <FormFeedback tooltip style={{ display: "flex", marginTop: "960px" }}>{errorMessages.malzemeler}</FormFeedback>}
                     </FormGroup>
                     <FormGroup className="textAlani">
                         <Label htmlFor="özel" style={{ fontWeight: "bold" }}>
