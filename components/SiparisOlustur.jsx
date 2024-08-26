@@ -265,7 +265,7 @@ export default function SiparisOlustur() {
                                 </FormGroup>
                             ))}
                         </FormGroup>
-                        {errors.malzemeler && <FormFeedback tooltip style={{ display: "flex", marginTop: "960px" }}>{errorMessages.malzemeler}</FormFeedback>}
+                        {errors.malzemeler && <FormFeedback tooltip style={{ display: "flex", marginTop: "940px" }}>{errorMessages.malzemeler}</FormFeedback>}
                     </FormGroup>
                     <FormGroup className="textAlani">
                         <Label htmlFor="özel" style={{ fontWeight: "bold" }}>
