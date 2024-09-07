@@ -59,14 +59,6 @@ export default function SiparisOlustur() {
 
     setForm({ ...form, [name]: value });
 
-    if (name === "isim") {
-      if (value === "kücük" || value === "orta" || value === "büyük") {
-        setErrors({ ...errors, [name]: false });
-      } else {
-        setErrors({ ...errors, [name]: true });
-      }
-    }
-
     if (name === "boyut") {
       if (
         value === "İncecik Hamur" ||
@@ -116,11 +108,16 @@ export default function SiparisOlustur() {
       .then((response) => {
         setForm(initialForm);
         history.push("/siparis-basarili");
-        console.log(response.data);
+        console.log(form);
       })
       .catch((err) => {
         history.push("/error");
       });
+  };
+
+  const handleSize = (size) => {
+    setForm({ ...form, isim: size });
+    setErrors({ ...errors, isim: false });
   };
 
   return (
@@ -171,25 +168,51 @@ export default function SiparisOlustur() {
         <Form onSubmit={handleSubmit}>
           <FormGroup className="boyutHamur">
             <FormGroup className="yeni" tag="fieldset">
-              <legend>Boyut Seç</legend>
+              <legend>
+                Boyut Seç <span style={{ color: "red" }}>*</span>
+              </legend>
               <div className="yeniBoyut">
-                <div className="boyutSecim">S</div>
-                <div className="boyutSecim">M</div>
-                <div className="boyutSecim" style={{ background: "#FFEECC" }}>
+                <div
+                  className={
+                    form.isim === "S" ? "boyutSecim secili" : "boyutSecim"
+                  }
+                  onClick={() => handleSize("S")}
+                >
+                  S
+                </div>
+                <div
+                  className={
+                    form.isim === "M" ? "boyutSecim secili" : "boyutSecim"
+                  }
+                  onClick={() => handleSize("M")}
+                >
+                  M
+                </div>
+                <div
+                  className={
+                    form.isim === "L" ? "boyutSecim secili" : "boyutSecim"
+                  }
+                  onClick={() => handleSize("L")}
+                >
                   L
                 </div>
               </div>
               {errors.isim && (
                 <FormFeedback
                   tooltip
-                  style={{ display: "flex", marginTop: "550px" }}
+                  style={{ display: "flex", marginTop: "250px" }}
                 >
                   {errorMessages.isim}
                 </FormFeedback>
               )}
             </FormGroup>
             <FormGroup className="yeni">
-              <Label htmlFor="exampleSelect">Hamur Seç</Label>
+              <Label htmlFor="exampleSelect">
+                <legend>
+                  Hamur Seç
+                  <span style={{ color: "red" }}>*</span>
+                </legend>
+              </Label>
               <Input
                 id="exampleSelect"
                 name="boyut"
@@ -210,14 +233,16 @@ export default function SiparisOlustur() {
                 style={{
                   display: "flex",
                   marginLeft: "135px",
-                  marginTop: "515px",
+                  marginTop: "250px",
                 }}
               >
                 {errorMessages.boyut}
               </FormFeedback>
             )}
           </FormGroup>
-          <legend>Ek Malzemeler</legend>
+          <legend>
+            Ek Malzemeler <span style={{ color: "red" }}>*</span>
+          </legend>
           <legend className="malzemeSec">
             En Fazla 10 Malzeme Seçebilirsiniz. (5₺)
           </legend>
@@ -288,7 +313,7 @@ export default function SiparisOlustur() {
             {errors.malzemeler && (
               <FormFeedback
                 tooltip
-                style={{ display: "flex", marginTop: "940px" }}
+                style={{ display: "flex", marginTop: "640px" }}
               >
                 {errorMessages.malzemeler}
               </FormFeedback>
