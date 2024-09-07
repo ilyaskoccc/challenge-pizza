@@ -6,11 +6,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/SiparisBasarili.css";
 // import './App.css' yazasark tüm css inline ortadan kalkar.
 
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footter from "../components/Footter";
 
 function App() {
+  const [verilenSiparis, setVerilenSiparis] = useState();
   return (
     <Router>
       <div>
@@ -19,10 +20,10 @@ function App() {
             <Anasayfa />
           </Route>
           <Route path="/siparis-olustur">
-            <SiparisOlustur />
+            <SiparisOlustur setVerilenSiparis={setVerilenSiparis} />
           </Route>
           <Route path="/siparis-basarili">
-            <SiparisBasarili />
+            <SiparisBasarili verilenSiparis={verilenSiparis} />
           </Route>
         </Switch>
       </div>

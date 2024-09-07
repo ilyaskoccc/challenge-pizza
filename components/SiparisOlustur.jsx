@@ -29,7 +29,7 @@ const errorMessages = {
   malzemeler: "En az 4 malzeme seçmelisiniz.",
 };
 
-export default function SiparisOlustur() {
+export default function SiparisOlustur({ setVerilenSiparis }) {
   const [form, setForm] = useState(initialForm);
   const [isValid, setIsValid] = useState(false);
   const history = useHistory();
@@ -108,7 +108,7 @@ export default function SiparisOlustur() {
       .then((response) => {
         setForm(initialForm);
         history.push("/siparis-basarili");
-        console.log(form);
+        setVerilenSiparis(form);
       })
       .catch((err) => {
         history.push("/error");
